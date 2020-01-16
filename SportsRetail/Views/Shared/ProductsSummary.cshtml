@@ -1,0 +1,26 @@
+﻿@model Product
+
+<div class="col-sm-3">
+    <figure class="figure">
+        <img src="@Model.ImageThumbnailUrl" class="figure-img img-fluid rounded">
+        <figcaption class="figure-caption">
+            <h4 class="float-right">@Model.Price.ToString("c")</h4>
+            <h3>
+                <a asp-controller="Product" asp-action="Details" asp-route-productId="@Model.ProductId">@Model.Name</a>
+            </h3>
+            <p>@Model.ShortDescription</p>
+
+            <div class="addToCart text-right">
+                <p class="button ">
+                    <a class="btn btn-success" id="cartButton"
+                       asp-controller="ShoppingCart"
+                       asp-action="AddToShoppingCart"
+                       asp-route-productId="@Model.ProductId">
+                        Add to cart
+                    </a>
+                </p>
+            </div>
+
+        </figcaption>
+    </figure>
+</div>

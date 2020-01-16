@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html> 
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/fontawesome/dist/css/all.min.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/popper/dist/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="~/Content/Stripe.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <title>Sports Planet</title>
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            @await Component.InvokeAsync("CategoryMenu")
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Contact" asp-action="Index">Contact</a>
+            </li>
+            @await Component.InvokeAsync("ShoppingCartSummary")
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            @await Html.PartialAsync("LoginPartial")
+        </ul>
+        &nbsp;&nbsp;
+        <form class="navbar-form navbar-right" asp-controller="Product" asp-action="Search" method="get">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search for a product" name="searchString" value="@ViewData["searchString"]">
+            </div>
+        </form>
+    </nav>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p><a target="_blank" href="https://github.com/ChinTzu/CSharp">&copy; 2019</a></p>
+        </footer>
+    </div>
+    
+</body>
+</html>

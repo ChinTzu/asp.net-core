@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-offset-3">
+            <h2>Total Price : @ViewBag.totalPrice.ToString("C") </h2>
+
+            <form action="Create" method="post" id="payment-form">
+
+                <div class="form-group">
+                    <label for="card-name">Card Name</label>
+                    <input type="text" name="cardName" class="form-control" id="card-name" placeholder="card name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="tel" name="phone" class="form-control" id="phone" placeholder="phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="card-number">
+                        Credit or debit card
+                    </label>
+                    <div id="card-number">
+                        <!-- A Stripe Element will be inserted here. -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <label for="card-cvc">
+                                CVC
+                            </label>
+                            <div id="card-cvc">
+                                <!-- A Stripe Element will be inserted here. -->
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label for="card-exp">
+                                Expired
+                            </label>
+                            <div id="card-exp">
+                                <!-- A Stripe Element will be inserted here. -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Used to display form errors. -->
+                <div id="card-errors" role="alert"></div>
+
+                <!-- Total price -->
+                @Html.Hidden("totalPrice", (object)ViewBag.totalPrice)
+
+                <div class="form-group">
+                    <button class="form-control btn btn-primary">Submit Payment</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
